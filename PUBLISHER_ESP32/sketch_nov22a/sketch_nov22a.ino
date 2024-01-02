@@ -60,14 +60,10 @@ void setup() {
 void loop() {
   client.loop();
   jsonDoc["id"] = id;
-  jsonDoc["luminosidade"] = random(0, 100);
-  jsonDoc["humidade"] = random(0, 100);
-  jsonDoc["temperatura"] = random(-10, 40);
-  jsonDoc["altitude"] = random(0, 100);
-  giroscopio["x"] = random(0, 100);
-  giroscopio["y"] = random(-10, 40);
-  giroscopio["z"] = random(-10, 40);
-  jsonDoc["giroscopio"] = giroscopio;
+  jsonDoc["Volume_corrente"] = volume_corrente;
+  jsonDoc["Razao_IE"] = razao_ie;
+  jsonDoc["Frequencia"] = frequencia;
+  jsonDoc["Fluxo_medio"] = fluxo_medio;
   
   char jsonBuffer[200];
   serializeJson(jsonDoc, jsonBuffer);
@@ -77,5 +73,13 @@ void loop() {
 
   client.publish("messages", jsonBuffer);
 
-  delay(10000);  
+  delay(1000);  
 }
+
+
+/*
+  giroscopio["x"] = random(0, 100);
+  giroscopio["y"] = random(-10, 40);
+  giroscopio["z"] = random(-10, 40);
+  jsonDoc["giroscopio"] = giroscopio;
+  */
